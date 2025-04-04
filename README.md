@@ -47,6 +47,62 @@ Source Files → SSIS Pipeline → SQL Server Database
 3. Monitor execution through SSMS or custom logging tables
 4. Review audit tables for processing metrics and status
 
+## Database Tables
+The solution utilizes the following database tables:
+
+### Fact Transactions
+Main table storing processed telecom transaction data.
+
+| Column | Data Type | Description |
+|--------|-----------|-------------|
+| ID | int IDENTITY | Primary key for the table |
+| Transaction_id | int | Unique identifier for the transaction |
+| IMSI | varchar(9) | International Mobile Subscriber Identity |
+| subscriber_id | int | Foreign key to subscriber information |
+| TAC | varchar(8) | Type Allocation Code (derived) |
+| SNR | varchar(6) | Serial Number (derived) |
+| IMEI | varchar(15) | International Mobile Equipment Identity |
+| CELL | int | Cell tower identifier |
+| LAC | int | Location Area Code |
+| EVENT_TYPE | varchar(2) | Type of telecom event |
+| EVENT_TS | datetime | Timestamp when event occurred |
+| audit_id | int | Link to audit record for traceability |
+
+### Dimension IMSI Reference
+Lookup table for mapping IMSI to subscriber IDs.
+
+| Column | Data Type | Description |
+|--------|-----------|-------------|
+| id | int IDENTITY | Primary key for the table |
+| imsi | varchar(9) | International Mobile Subscriber Identity |
+| subscriber_id | int | Unique identifier for the subscriber |
+
+### Error From Source
+Captures errors encountered during file extraction.
+
+| Column | Data Type | Description |
+|--------|-----------|-------------|
+| Data Row | varchar(max) | Raw data that caused the error |
+| ErrorCode | int | SSIS error code |
+| ErrorColumn | int | Column index where error occurred |
+| audit_id | int | Link to audit record (default: -1) |
+
+### Rejected Rows Destination
+Stores rows that fail validation rules.
+
+| Column | Data Type | Description |
+|--------|-----------|-------------|
+| id | int | Record identifier |
+| imsi | varchar(9) | International Mobile Subscriber Identity |
+| imei | varchar(14) | International Mobile Equipment Identity |
+| cell | bigint | Cell tower identifier |
+| lac | bigint | Location Area Code |
+| event_type | varchar(1) | Type of telecom event |
+| event_ts | datetime | Timestamp when event occurred |
+| subscriber_id | int | Foreign key to subscriber information |
+| TAC | varchar(8) | Type Allocation Code (derived) |
+| SNR | varchar(6) | Serial Number (derived) |
+| audit_id | int | Link to audit record (default: -1) |
 
 ## Audit System
 The package implements a comprehensive auditing system that tracks:
