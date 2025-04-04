@@ -1,5 +1,4 @@
-# Telecom Data Processing Pipeline
-
+<h1 style="color:navy;">Telecom Data Processing Pipeline</h1>
 ## Overview
 This data engineering project processes telecom communication data using SQL Server Integration Services (SSIS). The pipeline handles multiple file formats, performs data cleaning, transformation, and validation, while maintaining robust error handling and comprehensive auditing throughout the ETL process.
 
@@ -25,27 +24,6 @@ This data engineering project processes telecom communication data using SQL Ser
   - Maintains processing history for reporting and troubleshooting
   - Links processed files to audit records via audit_id
 
-## Technical Architecture
-```
-Source Files → SSIS Pipeline → SQL Server Database
-                    ↓
-           Error Management Tables
-                    ↓
-            Audit Tracking Tables
-                    ↓
- Processed Files Archive (with audit_id)
-```
-
-
-
-
-
-
-## Usage
-1. Deploy the SSIS package to SQL Server
-2. Execute the package using SQL Server Agent or manually through SSMS
-3. Monitor execution through SSMS or custom logging tables
-4. Review audit tables for processing metrics and status
 
 ## Database Tables
 The solution utilizes the following database tables:
