@@ -1,4 +1,4 @@
-<h1 style="color:navy;">Telecom Data Processing Pipeline</h1>
+# Telecom Data Processing Pipeline
 ## Overview
 This data engineering project processes telecom communication data using SQL Server Integration Services (SSIS). The pipeline handles multiple file formats, performs data cleaning, transformation, and validation, while maintaining robust error handling and comprehensive auditing throughout the ETL process.
 
