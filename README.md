@@ -1,6 +1,11 @@
 # Telecom Data Processing Pipeline
 ## Overview
 This data engineering project processes telecom communication data using SQL Server Integration Services (SSIS). The pipeline handles multiple file formats, performs data cleaning, transformation, and validation, while maintaining robust error handling and comprehensive auditing throughout the ETL process.
+### Control Flow
+![Control Flow](https://github.com/mark-eskander/Telecom-Data-Pipeline/blob/main/Assets/Control%20Flow.png)
+
+### Data Flow
+![Control Flow](https://github.com/mark-eskander/Telecom-Data-Pipeline/blob/main/Assets/Data%20Flow.png)
 
 ## Features
 - **Multi-format File Processing**: Reads data from files with multiple extensions
