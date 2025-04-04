@@ -13,7 +13,7 @@ This data engineering project processes telecom communication data using SQL Ser
   - Corrects data type mismatches
 - **Data Transformation**: Derives new columns including SNR and TAC values
 - **Error Handling**:
-  - Redirects rejected rows[According To Requirements File] to a dedicated table
+  - Redirects rejected rows[According To Requirements File {LAC , IMSI , CELL , Event TimeStamp } Contains Null] to a dedicated table
   - Captures source errors in a separate error log table
 - **File Management**: 
   - Moves or copies processed files to archive location
